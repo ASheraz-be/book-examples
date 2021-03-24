@@ -15,7 +15,7 @@
     </h2>
     <p class="tags">
       Tags:
-      <script type="text/javascript">console.log("{{ post.tag.all }}")</script>
+      <script type="text/javascript">console.log("{{ post.get_absolute_url }}")</script>
       {% for tag in post.tag.all %}
         <a href="{% url 'blog:post_list_tag' tag.slug %}">
           {{ tag.name }}
@@ -28,5 +28,5 @@
     </p>
     {{ post.body|truncatewords:30|linebreaks }}
   {% endfor %}
-  {% include "pagination.html" with page=posts %}
+  {% include "pagination.html" with page=page_obj %}
 {% endblock %}

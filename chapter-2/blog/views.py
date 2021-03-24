@@ -28,10 +28,15 @@ def post_share(request, post_id):
 
 # class basedlist view
 class PostListView(ListView):
-	queryset = Post.draft.all()
+	# queryset = Post.draft.all()
 	context_object_name = 'posts'
 	paginate_by = 2
 	template_name = 'blog/post/list.html'
+	def get_queryset(self):
+		if self.kwargs and self.kwargs['slug_val']:
+			tag = get_object_or_404(Tag, slug=self.kwargs['slug_val'])
+			return Post.draft.filter(tag__in=[tag])
+		return Post.draft.all()
 
 
 # list view
