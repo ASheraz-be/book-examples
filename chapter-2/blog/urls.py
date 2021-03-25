@@ -9,7 +9,9 @@ urlpatterns = [
 
 	# Tag with Simple View
 	# path('', views.post_list, name='post_list'),
-	# path('<int:post_id>/share/', views.post_share, name='post_share'),
+	# path('slug/<slug:slug_val>/', views.post_list, name='post_list_tag')
+
+	path('<int:post_id>/share/', views.post_share, name='post_share'),
 	
 	path('<int:year>/<int:month>/<int:day>/<slug:post>/',views.post_detail, name='post_detail'),
 	
