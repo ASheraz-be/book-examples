@@ -89,9 +89,9 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTHENTICATION_BACKENDS = 'social_core.backends.facebook.FacebookOAuth2',
-SOCIAL_AUTH_FACEBOOK_KEY = '1724749844376412' # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '01d10ea33e16d029eb0805087e702c0c' # Facebook App Secret
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['ahsansheraz250@gmail.com']
+SOCIAL_AUTH_FACEBOOK_KEY = '' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['']
 
 
 AUTH_PASSWORD_VALIDATORS = [
