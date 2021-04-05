@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 AUTH_USER_MODEL = 'accounts.MyUser'
 # Application definition
 
+THUMBNAIL_DEBUG = True
+
 INSTALLED_APPS = [
     
     'django.contrib.auth',
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'images.apps.ImagesConfig',
+    'actions.apps.ActionsConfig',
     'django.contrib.admin',
     'social_django',
     'django_extensions',
@@ -142,3 +145,12 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+from django.urls import reverse_lazy
+ABSOLUTE_URL_OVERRIDES = {
+ AUTH_USER_MODEL: lambda u: reverse_lazy('user_detail', args=[u.username])
+}
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0

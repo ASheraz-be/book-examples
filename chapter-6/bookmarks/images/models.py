@@ -13,6 +13,7 @@ class Image(models.Model):
 	description = models.TextField(max_length=200, blank=True)
 	created = models.DateField(auto_now_add=True, db_index=True)
 	image = models.ImageField(upload_to='images/%Y/%m/%d/')
+	total_likes = models.PositiveIntegerField(db_index=True, default=0)
 
 	# ManyToManyField: Django creates an intermediary join table using the primary keys of both models
 	# Image.users_image_like.all()

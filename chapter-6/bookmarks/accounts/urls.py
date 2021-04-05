@@ -3,6 +3,7 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 
+
 urlpatterns = [
 	# using my own UserLoginView
 	path('login/', views.UserLoginView.as_view(), name='login'),
@@ -35,5 +36,12 @@ urlpatterns = [
 
 	# User & Profile Edit URL
 	path('edit/', views.EditFormView, name='edit'),
+
+	path('users/follow/', views.user_follow, name='u_follow'),
+	path('users/', views.UserList.as_view(), name='user_list'),
+	path('users/<username>/', views.UserDetail.as_view(), name='user_detail'),
+
+	
+
 ]
 

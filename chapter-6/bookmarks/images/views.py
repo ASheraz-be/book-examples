@@ -15,6 +15,13 @@ from common.decorators import ajax_required_decorator
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from actions.utils import create_action
+
+# import redis
+# from django.conf import settings
+# # connect to redis
+# r = redis.Redis(host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB)
+
 
 @method_decorator(login_required, name='dispatch')
 class ImageView(FormView):
@@ -66,6 +73,7 @@ class ImageView(FormView):
 @login_required
 def image_detail(request, id, slug):
 	image = get_object_or_404(Image, id=id, slug=slug)
+	# total_views = r.incr(f'image:{image.id}:views')
 	return render(request,'images/image/detail.html', {'section': 'images','image': image})
 
 
@@ -82,6 +90,7 @@ def ajax_image_like(request):
 			if action == 'like':
 				# used manager for "users_image_like" field of Image class model
 				image_obj.users_image_like.add(request.user)
+				create_action(request.user, 'likes', image)
 			else:
 				image_obj.users_image_like.remove(request.user)
 
