@@ -1,0 +1,18 @@
+- hypen (in order by)
+
+query sets study broadly (django documentation)
+
+specific:
+ 	- prefetch related
+ 	- select related
+ 	- bulk create
+ 	- creste_or_update
+ 	- get_or_create
+
+django oscar + oscar API difference.
+
+
+Sample Project: 
+	- any model overwrite in oscar (how to add new fields in different models) [product]
+	- update model of and views of [stock record].
+
